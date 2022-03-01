@@ -1,10 +1,14 @@
 ﻿#include <iostream>
 #include <string>
 #include <fstream>
+#define DEBUG
 
 //Создать программу с ии Помошник виндовс, который будет анализировать ежедневную деятельнось
 //польхователя и предлогать свои варианты в зависимлсти от времяни суток.
 
+#ifdef DEBUG
+string stProfil[3]{ "Main","DEBUG" };
+#endif // DEBUG
 
 using namespace std;
 //Создание профиля
@@ -98,16 +102,7 @@ bool FileGetandOpen(string stProfil[])
 	}
 }
 
-void SpeaktwithHis()
-{
-
-
-
-
-
-}
-
-void brain(string stProfil[])
+void brain()
 {
 	
 
@@ -119,8 +114,8 @@ int main()
 {
 	setlocale(LC_ALL, "ru");
 
-	string stProfil[3]{"one","two"};
-
+	/*string stProfil[3]{"one","two"};
+	
 	if (FileGetandOpen(stProfil) == true)
 	{ 
 		cout << stProfil[1] << "\t" << stProfil[2];
@@ -128,9 +123,9 @@ int main()
 	else
 	{
 		EnterProfil();
-	}
+	}*/
 	
-	brain(stProfil);
+	brain();
 
 	return 0;
 }
