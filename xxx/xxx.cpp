@@ -1,17 +1,24 @@
 ﻿#include <iostream>
 #include <string>
 #include <fstream>
+#include <stack>
 #define DEBUG
+using namespace std;
+
 
 //Создать программу с ии Помошник виндовс, который будет анализировать ежедневную деятельнось
 //польхователя и предлогать свои варианты в зависимлсти от времяни суток.
 
-#ifdef DEBUG
-string stProfil[3]{ "Main","DEBUG" };
-#endif // DEBUG
 
-using namespace std;
-//Создание профиля
+#ifdef DEBUG
+	string stFerstName = "FName";
+	string stLastName = "LName";
+#endif // DEBUG
+#ifdef NODEBUG
+	string stFerstName = "";
+	string stLastName = "";
+#endif // NODEBUG
+string stSpeack;
 
 void EnterProfil()
 {
@@ -62,7 +69,7 @@ void EnterProfil()
 
 //Подружить стринг с Русским
 
-bool FileGetandOpen(string stProfil[])
+bool FileGetandOpen()
 {
 	ifstream ProfileOpen;
 
@@ -86,11 +93,11 @@ bool FileGetandOpen(string stProfil[])
 
 			if (iIgnor == 2)
 			{
-				stProfil[1] = str;
+				stFerstName = str;
 			}
 			else if (iIgnor == 4)
 			{
-				stProfil[2] = str;
+				stLastName = str;
 
 				return true;
 			}
@@ -104,8 +111,9 @@ bool FileGetandOpen(string stProfil[])
 
 void brain()
 {
-	
-
+	stack <string> steck;
+	cin >> stSpeack;
+	steck.push(stSpeack); // Ввод слов в стек
 
 
 }
@@ -114,16 +122,16 @@ int main()
 {
 	setlocale(LC_ALL, "ru");
 
-	/*string stProfil[3]{"one","two"};
-	
-	if (FileGetandOpen(stProfil) == true)
-	{ 
-		cout << stProfil[1] << "\t" << stProfil[2];
+#ifdef NODEBUG
+	if (FileGetandOpen() == true)
+	{
+		cout << stFerstName << "\t" << stLastName;
 	}
 	else
 	{
 		EnterProfil();
-	}*/
+	}
+#endif // NODEBUG
 	
 	brain();
 
