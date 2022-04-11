@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include <string>
 #include <fstream>
-#include <stack>
+#include <vector>
+
 #define DEBUG
 using namespace std;
 
@@ -23,7 +24,6 @@ string stSpeack;
 void EnterProfil()
 {
 	ofstream ProfileMake;
-
 	ProfileMake.open("Profil.txt");
 
 	if (!ProfileMake.is_open())
@@ -33,27 +33,21 @@ void EnterProfil()
 	else
 	{
 		cout << "Я Вас не знаю, создать новый профиль? " << "\ny или n?" << endl;
-
 		char cSelect = 'n';
-
 		cin >> cSelect;
 
 		if (cSelect == 'y')
 		{
 			string stCinFile;
-
 			cout << "Скажите Ваше настоящее имя" << endl;
 			cin >> stCinFile;
 
 			ProfileMake << "Имя " << stCinFile << "\n";
-
 			cout << "Как мне к Вам обращаться? " << endl;
 			cin >> stCinFile;
 
 			ProfileMake << "Обращение " << stCinFile << "\n";
-
 			ProfileMake.close();
-
 			cout << "Спасибо " << stCinFile << " что не постеснялись и ответили на вводные вопросы)" << endl;
 		}
 		else
@@ -63,7 +57,6 @@ void EnterProfil()
 			return;
 		}
 	}
-
 	return;
 }
 
@@ -72,7 +65,6 @@ void EnterProfil()
 bool FileGetandOpen()
 {
 	ifstream ProfileOpen;
-
 	ProfileOpen.open("Profil.txt");
 
 	if (!ProfileOpen.is_open())
@@ -82,9 +74,7 @@ bool FileGetandOpen()
 	else
 	{
 		cout << "Добро пожаловать " << endl;
-
 		string str;
-
 		int iIgnor = 1;
 
 		while (!ProfileOpen.eof())
@@ -98,7 +88,6 @@ bool FileGetandOpen()
 			else if (iIgnor == 4)
 			{
 				stLastName = str;
-
 				return true;
 			}
 
@@ -111,9 +100,10 @@ bool FileGetandOpen()
 
 void brain()
 {
-	stack <string> steck;
+	std::vector <std::string> vSpeak;
+	std::string stSpeack;
 	cin >> stSpeack;
-	steck.push(stSpeack); // Ввод слов в стек
+	; // Ввод слов в стек
 
 
 }
