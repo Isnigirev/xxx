@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="SupportBrain.cpp" />
     <ClCompile Include="xxx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Head.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

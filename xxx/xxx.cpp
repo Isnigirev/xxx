@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include "Head.h"
 
 #define DEBUG
 using namespace std;
@@ -111,6 +112,14 @@ void brain()
 int main()
 {
 	setlocale(LC_ALL, "ru");
+	system("chcp 1251");
+
+	Support one("dfs");
+	one.GetNameHuman();
+
+	Support two;
+	two.GetNameHuman();
+	
 
 #ifdef NODEBUG
 	if (FileGetandOpen() == true)
