@@ -2,14 +2,15 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include "Head.h"
 
-
-Support::Support() {m_NameHuman = "Tester";}
-
-Support::Support(std::string NameHuman) : m_NameHuman (NameHuman) {}
-
-std::string Support::GetNameHuman() const
+void brain()
 {
-	return m_NameHuman;
+	std::vector <std::string> vSpeak;
+	std::string stSpeack;
+	std::cin >> stSpeack;
+	; // ¬вод слов в стек
+
+
 }
+
+
