@@ -6,7 +6,7 @@ class Support
 	std::string m_FormalAppeal;
 
 public:
-	Support(std::string &NameUser, std::string &FormalAppeal) : m_NameUser(NameUser), 
+	Support(std::string NameUser, std::string FormalAppeal) : m_NameUser(NameUser), 
 			m_FormalAppeal(FormalAppeal) {}
 
 	std::string GetNameUser() const { return m_NameUser; }
@@ -18,3 +18,6 @@ public:
 
 };
 
+void CreateProfile(Support& support);
+
+bool ReadProfile(Support& support);
