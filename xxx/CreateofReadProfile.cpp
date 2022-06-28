@@ -5,22 +5,26 @@
 
 void CreateProfile(Support &Maid)
 {
+	system("chcp 1251");
+
 	std::ofstream ProfileMake;
 	ProfileMake.open("Profil.txt");
 
 	if (!ProfileMake.is_open())
 	{
-		std::cout << "Ошибка, профиль не найден..." << std::endl;
+		std::cout << "Error, file not found..." << std::endl;
 	}
 	else
 	{
-		ProfileMake << "Имя " << Maid.GetNameUser() << "\n" << "Обращение " << Maid.GetFormalAppeal();
+		ProfileMake << "Name " << Maid.GetNameUser() << "\n" << "Appeal " << Maid.GetFormalAppeal() << "\n";
 		ProfileMake.close();
 	}
 }
 
 bool ReadProfile(Support &Maid)
 {
+	system("chcp 1251");
+
 	std::ifstream ProfileOpen;
 	ProfileOpen.open("Profil.txt");
 
@@ -31,7 +35,6 @@ bool ReadProfile(Support &Maid)
 	}
 	else
 	{
-		std::cout << "Добро пожаловать " << std::endl;
 		std::string str;
 		int iIgnor = 1;
 
