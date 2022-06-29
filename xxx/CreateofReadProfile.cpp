@@ -3,6 +3,7 @@
 #include <fstream>
 #include "Head.h"
 
+//Записывает в файл профиля данные введенные пользователем
 void CreateProfile(Support &Maid)
 {
 	system("chcp 1251");
@@ -20,10 +21,10 @@ void CreateProfile(Support &Maid)
 		ProfileMake.close();
 	}
 }
-
+//считывает данные ранее сохраненные в профиль
 bool ReadProfile(Support &Maid)
 {
-	system("chcp 1251");
+	//system("chcp 1251");
 
 	std::ifstream ProfileOpen;
 	ProfileOpen.open("Profil.txt");

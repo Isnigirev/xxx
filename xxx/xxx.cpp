@@ -2,9 +2,6 @@
 #include <string>
 #include "Head.h"
 
-
-
-
 int main()
 {
 	setlocale(LC_ALL, "russian");
@@ -26,8 +23,9 @@ int main()
 		CreateProfile(Maid);
 	}
 	
+	std::cout << "Wellcome! " << Maid.GetFormalAppeal() << ' ' << Maid.GetNameUser() << std::endl;
 
-	std::cout << Maid.GetNameUser() << " " << Maid.GetFormalAppeal();
+	Maid.SpeakToSupport();
 
 	return 0;
 }

@@ -18,15 +18,28 @@ void Support::SetNameUser(std::string &NameUser) { Support::m_NameUser = NameUse
 std::string Support::GetFormalAppeal() const { return Support::m_FormalAppeal; }
 void Support::SetFormalAppeal(std::string &FormalAppeal) { Support::m_FormalAppeal = FormalAppeal; }
 
-//CLASS SUPPORT//
-
-void brain()
+std::string Support::ReadWordsUser(const int SIZE, char Arr [])
 {
-	std::vector <std::string> vSpeak;
-	std::string stSpeack;
-	std::cin >> stSpeack;
-	; // ¬вод слов в стек
+	for (int i = 0; i < SIZE; i++)
+	{
+		
+	}
+}
 
+void Support::SpeakToSupport()
+{
+	const int MAXWORDSUSER = 200;
+	char WordsUser [MAXWORDSUSER];
+
+	//ƒобавить выход из цикла при помощи определенного действи€
+	do
+	{
+		std::cin.get(WordsUser, MAXWORDSUSER, '.');
+		std::cout << WordsUser << '.';
+
+		ReadWordsUser(MAXWORDSUSER, WordsUser);
+
+	} while (true);
 
 }
 
