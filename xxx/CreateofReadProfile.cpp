@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "Head.h"
+#include "MindSupport.h"
 
 //Записывает в файл профиля данные введенные пользователем
 void CreateProfile(Support &Maid)

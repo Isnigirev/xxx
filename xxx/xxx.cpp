@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include <string>
-#include "Head.h"
+#include "MindSupport.h"
 
 int main()
 {

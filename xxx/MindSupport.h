@@ -5,7 +5,7 @@ class Support
 	std::string m_NameUser;
 	std::string m_FormalAppeal;
 
-	std::string ReadWordsUser(const int SIZE, char Arr[]);
+	void ReadWordsUser(const int SIZE, char Arr[]);
 
 public:
 	Support();
