@@ -3,6 +3,10 @@
 #include <fstream>
 #include <vector>
 #include "MindSupport.h"
+//1. Добавить сохранение слов с исправлениями (чтоб пользователь сам мог поправить помошника),
+//2. Добавить возможность писать длинный текст в стринг
+
+
 
 //CLASS SUPPORT//
 Support::Support() {};
@@ -20,9 +24,18 @@ void Support::SetFormalAppeal(std::string &FormalAppeal) { Support::m_FormalAppe
 
 void Support::ReadWordsUser(const int SIZE, char Arr [])
 {
+	std::vector <std::string> Memori;
+	
 	for (int i = 0; i < SIZE; i++)
 	{
-		
+		if (Arr [i] == ' ' || Arr [i] == '.')
+		{
+			
+		}
+		else
+		{
+			
+		}
 	}
 
 
@@ -30,21 +43,34 @@ void Support::ReadWordsUser(const int SIZE, char Arr [])
 
 void Support::SpeakToSupport()
 {
-	const int MAXWORDSUSER = 200;
-	char WordsUser [MAXWORDSUSER];
+	char str [200];
+	std::vector <std::string> FlowWordUser;
+	std::string Word;
+	int counter = 0;
 
-	//Добавить выход из цикла при помощи определенного действия
+	std::cin.get (str, 200, '.');
+
 	do
 	{
-		std::cin.get(WordsUser, MAXWORDSUSER, '.');
-		std::cout << WordsUser << '.';
+		if (str[counter] == ' ' || str[counter] == '\0')
+		{
+			FlowWordUser.push_back(Word);
+			do
+			{
+				Word.pop_back();
+			} while (!Word.empty());
+		}
+		else
+		{
+			Word += str[counter];
+		}
+		counter++;
 
-		//ReadWordsUser(MAXWORDSUSER, WordsUser);
+	} while (str[counter] != '\0'); //bag
+	
+	
 
-		std::cout << "Next yes or not[ex]? \n";
-
-	} while (!std::cin.get(WordsUser, MAXWORDSUSER, 'ex')); //Баг, переделать
-
+	//ReadWordsUser(WordUser);
 }
 
 
