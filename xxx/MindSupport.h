@@ -1,11 +1,13 @@
 #pragma once
+#include <vector>
 
 class Support
 {
 	std::string m_NameUser;
 	std::string m_FormalAppeal;
+	std::vector <std::string> m_MemoriKeyWords;
 
-	void ReadWordsUser(const int SIZE, char Arr[]);
+	void ReadWordsUser(std::vector <std::string> &FlowWordUser);
 
 public:
 	Support();

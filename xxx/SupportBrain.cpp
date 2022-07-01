@@ -6,15 +6,13 @@
 //1. ƒобавить сохранение слов с исправлени€ми (чтоб пользователь сам мог поправить помошника),
 //2. ƒобавить возможность писать длинный текст в стринг
 
-
-
 //CLASS SUPPORT//
 Support::Support() {};
 
 Support::Support(std::string &NameUser, std::string &FormalAppeal) : m_NameUser(NameUser),
 m_FormalAppeal(FormalAppeal) {}
 
-Support::~Support() {}
+Support::~Support() { Support::m_MemoriKeyWords.~vector(); }
 
 std::string Support::GetNameUser() const {return Support::m_NameUser;};
 void Support::SetNameUser(std::string &NameUser) { Support::m_NameUser = NameUser; }
@@ -22,36 +20,34 @@ void Support::SetNameUser(std::string &NameUser) { Support::m_NameUser = NameUse
 std::string Support::GetFormalAppeal() const { return Support::m_FormalAppeal; }
 void Support::SetFormalAppeal(std::string &FormalAppeal) { Support::m_FormalAppeal = FormalAppeal; }
 
-void Support::ReadWordsUser(const int SIZE, char Arr [])
+void Support::ReadWordsUser(std::vector <std::string> &FlowWordUser)
 {
-	std::vector <std::string> Memori;
-	
-	for (int i = 0; i < SIZE; i++)
+//Ѕлок выбирает ключевые слова дл€ добавление их в ловарь и в пам€ть помошника
+
+	for (int i = 0; i < FlowWordUser.size(); i++)
 	{
-		if (Arr [i] == ' ' || Arr [i] == '.')
+		if (FlowWordUser[i] == "Ћень" || FlowWordUser[i] == "лень")
 		{
-			
-		}
-		else
-		{
-			
+			Support::m_MemoriKeyWords.push_back(FlowWordUser[i]);
 		}
 	}
 
-
+	FlowWordUser.~vector();
 }
 
 void Support::SpeakToSupport()
 {
-	char str [200];
+	char str [200] {};
 	std::vector <std::string> FlowWordUser;
 	std::string Word;
-	int counter = 0;
+	int counter = -1;
 
 	std::cin.get (str, 200, '.');
 
 	do
 	{
+		counter++;
+
 		if (str[counter] == ' ' || str[counter] == '\0')
 		{
 			FlowWordUser.push_back(Word);
@@ -64,13 +60,10 @@ void Support::SpeakToSupport()
 		{
 			Word += str[counter];
 		}
-		counter++;
-
-	} while (str[counter] != '\0'); //bag
+		
+	} while (str[counter] != '\0');
 	
-	
-
-	//ReadWordsUser(WordUser);
+	ReadWordsUser(FlowWordUser);
 }
 
 
