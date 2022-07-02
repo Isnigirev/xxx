@@ -1,11 +1,35 @@
 #pragma once
 #include <vector>
 
-class Support
+class Heart
+{
+	std::vector <std::string> m_MemoriKeyWords;
+	std::vector <std::string> m_MemoriUserWords;
+
+public:
+	Heart();
+	~Heart();
+
+
+
+
+
+
+};
+
+
+
+
+
+
+
+
+
+
+class Support : public Heart
 {
 	std::string m_NameUser;
 	std::string m_FormalAppeal;
-	std::vector <std::string> m_MemoriKeyWords;
 
 	void ReadWordsUser(std::vector <std::string> &FlowWordUser);
 

@@ -6,13 +6,34 @@
 //1. Добавить сохранение слов с исправлениями (чтоб пользователь сам мог поправить помошника),
 //2. Добавить возможность писать длинный текст в стринг
 
+//CLASS Heart//
+Heart::Heart()
+{
+}
+
+Heart::~Heart()
+{
+	Heart::m_MemoriKeyWords.~vector(); 
+	Heart::m_MemoriUserWords.~vector();
+}
+
+
+
+
+
+
+
+
+
+
+
 //CLASS SUPPORT//
 Support::Support() {};
 
 Support::Support(std::string &NameUser, std::string &FormalAppeal) : m_NameUser(NameUser),
 m_FormalAppeal(FormalAppeal) {}
 
-Support::~Support() { Support::m_MemoriKeyWords.~vector(); }
+Support::~Support() {}
 
 std::string Support::GetNameUser() const {return Support::m_NameUser;};
 void Support::SetNameUser(std::string &NameUser) { Support::m_NameUser = NameUser; }
@@ -31,6 +52,8 @@ void Support::ReadWordsUser(std::vector <std::string> &FlowWordUser)
 			Support::m_MemoriKeyWords.push_back(FlowWordUser[i]);
 		}
 	}
+	
+	Support::m_MemoriUserWords.assign(FlowWordUser.begin(), FlowWordUser.end());
 
 	FlowWordUser.~vector();
 }
