@@ -7,8 +7,6 @@
 //Сделать в виде ООП, чтоб можно было записывать и считывать ключевые слова и процее
 void CreateProfile(Support &Maid)
 {
-	system("chcp 1251");
-
 	std::ofstream ProfileMake;
 	ProfileMake.open("Profil.txt");
 
@@ -18,14 +16,62 @@ void CreateProfile(Support &Maid)
 	}
 	else
 	{
-		ProfileMake << "Name " << Maid.GetNameUser() << "\n" << "Appeal " << Maid.GetFormalAppeal() << "\n";
+		std::string EnterNameAndAppeal;
+		std::cout << "Enter Name: \n";
+		std::cin >> EnterNameAndAppeal;
+		Maid.SetNameUser(EnterNameAndAppeal);
+
+		std::cout << "Enter Appeal: \n";
+		std::cin >> EnterNameAndAppeal;
+		Maid.SetFormalAppeal(EnterNameAndAppeal);
+
+		ProfileMake << Maid.GetNameUser() << "\t" << Maid.GetFormalAppeal();
 		ProfileMake.close();
 	}
 }
 //считывает данные ранее сохраненные в профиль
 bool ReadProfile(Support &Maid)
 {
-	//system("chcp 1251");
+	std::ifstream ProfileOpen;
+	ProfileOpen.open("Profil.txt");
+
+	if (!ProfileOpen.is_open())
+	{
+		std::cout << "File not found" << std::endl;
+		CreateProfile(Maid);
+	}
+	else
+	{
+		std::string str;
+		int iIgnor = 0;
+
+		while (!ProfileOpen.eof())
+		{
+			ProfileOpen >> str;
+
+			if (iIgnor == 0)
+			{
+				Maid.SetNameUser(str);
+			}
+			else
+			{
+				Maid.SetFormalAppeal(str);
+			}
+
+			iIgnor++;
+		}
+
+		ProfileOpen.close();
+	}
+
+	return 0;
+}
+
+void OpenFileMemori(std::vector <std::string> &Memori, int &loal)
+{
+
+	std::string NameFile = Memori[0];
+
 
 	std::ifstream ProfileOpen;
 	ProfileOpen.open("Profil.txt");
@@ -33,30 +79,17 @@ bool ReadProfile(Support &Maid)
 	if (!ProfileOpen.is_open())
 	{
 		std::cout << "File not found" << std::endl;
-		return 0;
 	}
 	else
 	{
 		std::string str;
-		int iIgnor = 1;
+		int iIgnor = 0;
 
 		while (!ProfileOpen.eof())
 		{
 			ProfileOpen >> str;
-
-			if (iIgnor == 2)
-			{
-				Maid.SetNameUser(str);
-			}
-			else if (iIgnor == 4)
-			{
-				Maid.SetFormalAppeal(str);
-				return true;
-			}
-
-			iIgnor++;
 		}
-		
+
 		ProfileOpen.close();
 	}
 }

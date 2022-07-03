@@ -1,13 +1,32 @@
 #pragma once
 #include <vector>
 
-class Heart
+class Intelligence
 {
+	int m_loyalty;	//% loal to user
+
 	std::vector <std::string> m_MemoriKeyWords;
 	std::vector <std::string> m_MemoriUserWords;
 
 public:
+	Intelligence();
+
+	~Intelligence();
+
+	void ReadWordsUser(std::vector <std::string>& FlowWordUser);
+
+};
+
+
+class Heart
+{
+	int sympathy;	//% loal to user
+
+	std::vector <std::string> m_HeartKeyMemoriWords;
+
+public:
 	Heart();
+
 	~Heart();
 
 
@@ -17,21 +36,10 @@ public:
 
 };
 
-
-
-
-
-
-
-
-
-
-class Support : public Heart
+class Support : public Heart, Intelligence
 {
 	std::string m_NameUser;
 	std::string m_FormalAppeal;
-
-	void ReadWordsUser(std::vector <std::string> &FlowWordUser);
 
 public:
 	Support();

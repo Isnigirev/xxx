@@ -6,25 +6,54 @@
 //1. ƒобавить сохранение слов с исправлени€ми (чтоб пользователь сам мог поправить помошника),
 //2. ƒобавить возможность писать длинный текст в стринг
 
+//CLASS Intelligence//
+
+
+Intelligence::Intelligence()
+{
+	Intelligence::m_MemoriKeyWords.reserve(5);
+	Intelligence::m_MemoriKeyWords.push_back("IntelligenceKeyWords");
+
+	Intelligence::m_MemoriUserWords.reserve(10);
+};
+
+Intelligence::~Intelligence()
+{
+	Intelligence::m_MemoriKeyWords.clear();
+	Intelligence::m_MemoriKeyWords.~vector();
+
+	Intelligence::m_MemoriUserWords.clear();
+	Intelligence::m_MemoriUserWords.~vector();
+};
+
+void Intelligence::ReadWordsUser(std::vector <std::string>& FlowWordUser)
+{
+	//Ѕлок выбирает ключевые слова дл€ добавление их в ловарь и в пам€ть помошника
+
+	for (int i = 0; i < FlowWordUser.size(); i++)
+	{
+		if (FlowWordUser[i] == "Ћень" || FlowWordUser[i] == "лень")
+		{
+			//Support::m_MemoriKeyWords.push_back(FlowWordUser[i]);
+		}
+	}
+
+	//Support::m_MemoriUserWords.assign(FlowWordUser.begin(), FlowWordUser.end());
+
+	FlowWordUser.~vector();
+}
+
+
 //CLASS Heart//
 Heart::Heart()
 {
+	Heart::m_HeartKeyMemoriWords.push_back("HeartKeyWords");
 }
 
 Heart::~Heart()
 {
-	Heart::m_MemoriKeyWords.~vector(); 
-	Heart::m_MemoriUserWords.~vector();
+	
 }
-
-
-
-
-
-
-
-
-
 
 
 //CLASS SUPPORT//
@@ -41,22 +70,6 @@ void Support::SetNameUser(std::string &NameUser) { Support::m_NameUser = NameUse
 std::string Support::GetFormalAppeal() const { return Support::m_FormalAppeal; }
 void Support::SetFormalAppeal(std::string &FormalAppeal) { Support::m_FormalAppeal = FormalAppeal; }
 
-void Support::ReadWordsUser(std::vector <std::string> &FlowWordUser)
-{
-//Ѕлок выбирает ключевые слова дл€ добавление их в ловарь и в пам€ть помошника
-
-	for (int i = 0; i < FlowWordUser.size(); i++)
-	{
-		if (FlowWordUser[i] == "Ћень" || FlowWordUser[i] == "лень")
-		{
-			Support::m_MemoriKeyWords.push_back(FlowWordUser[i]);
-		}
-	}
-	
-	Support::m_MemoriUserWords.assign(FlowWordUser.begin(), FlowWordUser.end());
-
-	FlowWordUser.~vector();
-}
 
 void Support::SpeakToSupport()
 {
@@ -86,7 +99,7 @@ void Support::SpeakToSupport()
 		
 	} while (str[counter] != '\0');
 	
-	ReadWordsUser(FlowWordUser);
+	Support::ReadWordsUser(FlowWordUser);
 }
 
 
