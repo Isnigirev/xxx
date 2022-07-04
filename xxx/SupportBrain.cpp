@@ -19,10 +19,8 @@ Intelligence::Intelligence()
 
 Intelligence::~Intelligence()
 {
-	Intelligence::m_MemoriKeyWords.clear();
 	Intelligence::m_MemoriKeyWords.~vector();
 
-	Intelligence::m_MemoriUserWords.clear();
 	Intelligence::m_MemoriUserWords.~vector();
 };
 
@@ -73,33 +71,34 @@ void Support::SetFormalAppeal(std::string &FormalAppeal) { Support::m_FormalAppe
 
 void Support::SpeakToSupport()
 {
-	char str [200] {};
 	std::vector <std::string> FlowWordUser;
 	std::string Word;
-	int counter = -1;
+	std::string Buf;
 
-	std::cin.get (str, 200, '.');
+	int i = -1;
+
+	std::getline(std::cin, Buf, '\n');
 
 	do
 	{
-		counter++;
+		i++;
 
-		if (str[counter] == ' ' || str[counter] == '\0')
+		if (Buf[Buf.size() - 1] == ' ' || Buf.empty())
 		{
 			FlowWordUser.push_back(Word);
-			do
-			{
-				Word.pop_back();
-			} while (!Word.empty());
+
+			Word.clear();
 		}
 		else
 		{
-			Word += str[counter];
+			Word += Buf[Buf.size() - 1];
+
+			Buf.pop_back();
 		}
+
+	} while (!Buf.empty() || !Word.empty());
 		
-	} while (str[counter] != '\0');
-	
-	Support::ReadWordsUser(FlowWordUser);
+	//Support::ReadWordsUser(FlowWordUser);
 }
 
 
